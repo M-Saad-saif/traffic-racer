@@ -37,8 +37,8 @@ class Car {
       carimg.onload = () => {
         this.Image = carimg;
         let imagescale = 0.2;
-        this.width = carimg.width * imagescale + 10;
-        this.height = carimg.height * imagescale + 10;
+        this.width = carimg.width * imagescale + 4;
+        this.height = carimg.height * imagescale + 20;
 
         (this.oiginalY = canvas.height - this.height),
           (this.position = {
@@ -112,7 +112,7 @@ class Obstatcle {
     // for moblie
     if (window.innerWidth <= 500 && window.innerWidth >= 315) {
       random_enemy_pic = [
-        { src: "enemyimage1.png", scaleX: 0.08, scaleY: 0.19 },
+        { src: "enemyimage1.png", scaleX: 0.07, scaleY: 0.19 }, //red car
         { src: "enemycar2.png", scaleX: 0.035, scaleY: 0.07 },
         { src: "enemycar3.png", scaleX: 0.1, scaleY: 0.3 },
       ];
@@ -302,9 +302,9 @@ function animation() {
 
     // collision detection bw car and obstacle
     if (
-      player.position.x + 23 < obstable.position.x + obstable.width &&
-      player.position.x + player.width - 23 > obstable.position.x &&
-      player.position.y + 17 < obstable.position.y + obstable.height &&
+      player.position.x + 15< obstable.position.x + obstable.width && // Left side of player < Right side of obstacle
+      player.position.x + player.width - 15 > obstable.position.x &&  // Right side of player > Left side of obstacle
+      player.position.y + 17 < obstable.position.y + obstable.height &&  //Top side of player < Bottom side of obstacle
       player.position.y + player.height - 17 > obstable.position.y
     ) {
       cancelAnimationFrame(animationId);
